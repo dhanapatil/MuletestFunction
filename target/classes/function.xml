@@ -18,5 +18,6 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 			</ee:variables>
 		</ee:transform>
 		<logger level="INFO" doc:name="Logger" doc:id="0fbde7bd-b72d-45be-8b04-46e0b602874d" message="payload"/>
+		<logger level="INFO" doc:name="extralogger" doc:id="d05950b4-a5ca-4714-975a-f5133fb337a1" message="extralogger"/>
 	</flow>
 </mule>
