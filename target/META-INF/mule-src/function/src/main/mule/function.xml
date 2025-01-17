@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f7edeaa1-d384-423d-ad64-44e50e790a53" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="functionFlow" doc:id="305b8f51-e83e-4c6e-9b58-22f40d3a6be7" >
+		<http:listener doc:name="Listener" doc:id="53df4e0f-72da-4829-8798-5389fc0a9f51" config-ref="HTTP_Listener_config" path="/fundynamic"/>
+		<ee:transform doc:name="Transform Message" doc:id="03dde9a1-2aa6-4f74-9e33-d108a77b488b" >
+			<ee:message >
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="fetch name" ><![CDATA[attribute.queryParam.name]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="0fbde7bd-b72d-45be-8b04-46e0b602874d" message="payload"/>
+	</flow>
+</mule>
